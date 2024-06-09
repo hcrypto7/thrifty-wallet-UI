@@ -29,7 +29,7 @@ import MobileNavDrawer from "../../../components/Layout/MobileNavDrawer";
 // Component Loader
 import ComponentLoader from "../../../components/ProgressLoader/ComponentLoader";
 
-import { Web3 } from 'web3';
+import { Web3 } from "web3";
 
 import MetaMaskSDK from "@metamask/sdk";
 
@@ -46,30 +46,41 @@ const RewardPathAreaMobile = React.lazy(() =>
   import("../RewardPathArea/RewardPathAreaMobile")
 );
 
-
-
 const address = "0x407585c982D93cce34b60FC93A13d8A758A588be";
-const abi = [  {
-  inputs: [
-    {
-      internalType: "address",
-      name: "account",
-      type: "address",
-    },
-  ],
-  name: "balanceOf",
-  outputs: [
-    {
-      internalType: "uint256",
-      name: "",
-      type: "uint256",
-    },
-  ],
-  stateMutability: "view",
-  type: "function",
-},];
-
-
+const abi = [
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+];
 
 const TopCardAreaMobile = ({ handleConfetti }) => {
   const [progressValue, setProgressValue] = useState(0);
@@ -77,35 +88,38 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
 
   const [connectedAccount, setConnectedAccount] = useState("");
   const [rewardToken, setRewardToken] = useState("");
-  
-  const connectMetamask = async() => {
+
+  const connectMetamask = async () => {
     //check metamask is installed
     if (window.ethereum) {
       // instantiate Web3 with the injected provider
-      const web3 = new Web3(window.ethereum);
+      const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/FxBgZvpWVsDWVfJMj_u3UU_KN2HY2c1Q");
       const rewardTokenContract = new web3.eth.Contract(abi, address);
-  
-      //request user to connect accounts (Metamask will prompt)
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-  
-      //get the connected accounts
-      const accounts = await web3.eth.getAccounts();
-      const blocknum = await web3.eth.getBlockNumber();
-      console.log("blocknum:", blocknum);
 
-      const totalSupply = await rewardTokenContract.methods.balanceOf(accounts[0]).call();
-      console.log("reward:", totalSupply)
-      setRewardToken(web3.utils.fromWei(totalSupply, 'ether'));
-      
+      //request user to connect accounts (Metamask will prompt)
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+
+
+      //get the connected accounts
+      // const accounts = await web3.eth.getAccounts();
+      // const blocknum = await web3.eth.getBlockNumber();
+      // console.log("blocknum:", blocknum);
+
+      const totalSupply = await rewardTokenContract.methods
+        .balanceOf(accounts[0])
+        .call();
+      console.log("reward:", totalSupply);
+      setRewardToken(web3.utils.fromWei(totalSupply, "ether"));
+
       //show the first connected account in the react page
       setConnectedAccount(accounts[0]);
       console.log("account", accounts[0]);
     } else {
-      alert('Please download metamask');
+      alert("Please download metamask");
     }
-  }
-  
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     connectMetamask();
   }, []);
 
