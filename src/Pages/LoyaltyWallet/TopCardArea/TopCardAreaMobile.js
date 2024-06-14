@@ -49,36 +49,36 @@ const RewardPathAreaMobile = React.lazy(() =>
 const address = "0x407585c982D93cce34b60FC93A13d8A758A588be";
 const abi = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
-    "name": "balanceOf",
-    "outputs": [
+    name: "balanceOf",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "decimals",
-    "outputs": [
+    inputs: [],
+    name: "decimals",
+    outputs: [
       {
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-      }
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
 ];
 
@@ -93,12 +93,22 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
     //check metamask is installed
     if (window.ethereum) {
       // instantiate Web3 with the injected provider
-      const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/FxBgZvpWVsDWVfJMj_u3UU_KN2HY2c1Q");
+      const web3 = new Web3(
+        "https://eth-sepolia.g.alchemy.com/v2/FxBgZvpWVsDWVfJMj_u3UU_KN2HY2c1Q"
+      );
       const rewardTokenContract = new web3.eth.Contract(abi, address);
 
       //request user to connect accounts (Metamask will prompt)
-      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
 
+      //get the connected accounts
+      const accountInfo = {
+        info: "walletAddr",
+        address: accounts[0],
+      };
+      window.parent.postMessage(accountInfo, "*");
 
       //get the connected accounts
       // const accounts = await web3.eth.getAccounts();
