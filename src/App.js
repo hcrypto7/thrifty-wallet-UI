@@ -193,7 +193,7 @@ function App() {
                       <Route
                         path="/"
                         element={
-                          <Navigate replace to="/wallets/crypto-wallet" />
+                          <Navigate replace to="/wallets/loyalty-wallet" />
                         }
                       />
                       <Route

@@ -1,9 +1,9 @@
 const LayoutRoutes = [
-  {
-    id: 1,
-    path: "/crypto-wallet",
-    name: "Crypto Wallet",
-  },
+  // {
+  //   id: 1,
+  //   path: "/crypto-wallet",
+  //   name: "Crypto Wallet",
+  // },
   // {
   //   id: 2,
   //   path: "/fiat-wallet",
