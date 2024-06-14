@@ -54,14 +54,13 @@ const CryptoWalletTopCards = () => {
     //check metamask is installed
     if (window.ethereum) {
       // instantiate Web3 with the injected provider
-      const web3 = new Web3(window.ethereum);
-      // const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/FxBgZvpWVsDWVfJMj_u3UU_KN2HY2c1Q");
+      // const web3 = new Web3(window.ethereum);
+      const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/FxBgZvpWVsDWVfJMj_u3UU_KN2HY2c1Q");
 
       //request user to connect accounts (Metamask will prompt)
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
       //get the connected accounts
-      const accounts = await web3.eth.getAccounts();
       const accountInfo = {
         "info":"walletAddr",
         "address":accounts[0]
