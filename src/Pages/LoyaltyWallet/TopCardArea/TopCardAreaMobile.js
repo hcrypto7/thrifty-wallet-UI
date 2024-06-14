@@ -110,11 +110,6 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
       };
       window.parent.postMessage(accountInfo, "*");
 
-      //get the connected accounts
-      // const accounts = await web3.eth.getAccounts();
-      // const blocknum = await web3.eth.getBlockNumber();
-      // console.log("blocknum:", blocknum);
-
       const totalSupply = await rewardTokenContract.methods
         .balanceOf(accounts[0])
         .call();
