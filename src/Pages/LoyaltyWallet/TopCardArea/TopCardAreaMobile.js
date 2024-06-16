@@ -168,7 +168,7 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
           <Stack direction="row" justifyContent="space-between">
             <Box>
               <Typography variant="body2" color="common.black">
-                Available Points
+                Earned Tokens
               </Typography>
               <Typography variant="h3" color="#2B2B2B" fontWeight={700}>
                 {rewardToken}
@@ -186,12 +186,12 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
               variant="contained"
               fullWidth
             >
-              Redeem Points
+              Redeem Tokens
             </Button>
           </Box>
         </Box>
       </Box>
-      {/* <Box
+      <Box
         bgcolor={theme.palette.background.card}
         className={styles.badgeAreaMobile}
       >
@@ -396,7 +396,7 @@ const TopCardAreaMobile = ({ handleConfetti }) => {
             </Box>
           </Box>
         </Box>
-      </Box> */}
+      </Box>
       <MobileNavDrawer
         drawerOpen={showRewardPath}
         handleDrawerToggle={handleRewardPathNav}

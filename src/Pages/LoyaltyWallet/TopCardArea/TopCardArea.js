@@ -167,7 +167,7 @@ const TopCardArea = ({ handleConfetti }) => {
               <Stack direction="row" justifyContent="space-between">
                 <Box>
                   <Typography variant="body2" color="common.black">
-                    Available Points
+                    Eanred Tokens
                   </Typography>
                   <Typography variant="h3" color="#2B2B2B" fontWeight={700}>
                     {rewardToken}
@@ -185,26 +185,26 @@ const TopCardArea = ({ handleConfetti }) => {
                   variant="contained"
                   fullWidth
                 >
-                  Redeem Points
+                  Redeem Tokens
                 </Button>
               </Box>
             </Box>
           </Box>
         </Box>
-        {/* <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }}>
           <Box
             bgcolor={theme.palette.background.paper}
             className={styles.badgeArea}
           >
             <Stack direction="row" justifyContent="space-between">
               <Typography variant="body2" color="secondary">
-                52 more points for Gold badge
+                52 more tokens for Gold badge
               </Typography>
               <Typography variant="body2" color="secondary">
                 <Typography component="span" color="primary">
                   10,040
                 </Typography>{" "}
-                Points Earned till now
+                Tokens Earned till now
               </Typography>
             </Stack>
             <Box className={styles.badgeProgressArea}>
@@ -337,7 +337,7 @@ const TopCardArea = ({ handleConfetti }) => {
               </Box>
             </Box>
           </Box>
-        </Box> */}
+        </Box>
       </Stack>
     </Box>
   );
